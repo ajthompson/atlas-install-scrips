@@ -5,8 +5,7 @@ if [ -d /home/$USER/ros_catkin_ws ] ; then
 fi
 
 # install dependencies
-sudo apt-get install -y python-pip
-sudo pip install -U rosdep rosinstall_generator wstool rosinstall
+sudo apt-get install -y python-pip python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential
 
 # initialize rosdep
 sudo rosdep init
@@ -32,8 +31,18 @@ rm -rf src/gazebo_ros_pkgs
 
 # source the install
 COUNT=$(grep -a "source ~/ros_catkin_ws/install_isolated/setup.bash" ~/.bashrc | wc -l)
-if [ COUNT -eq 0 ] ; then
+if [ $COUNT -eq 0 ] ; then
   echo "source ~/ros_catkin_ws/install_isolated/setup.bash" >> ~/.bashrc 
+fi
+
+# if it doesn't already exist, symlink /opt/ros/hydro/setup.bash to ~/ros_catkin_ws/install_isolated/setup.bash
+if [ ! -d /opt/ros/hydro ] ; then
+  sudo mkdir -p /opt/ros/hydro
+fi
+
+if [ ! -h /opt/ros/hydro/setup.bash ] ; then
+  sudo ln -s /home/$USER/ros_catkin_ws/install_isolated/setup.bash /opt/ros/hydro/setup.bash
+  sudo chmod +x /opt/ros/hydro/setup.bash
 fi
 
 exit 0

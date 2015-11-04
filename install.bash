@@ -8,10 +8,14 @@ source ~/.bashrc
 ./ros/ros_build.bash
 source ~/.bashrc
 
-# install opencv2 from source
-#./opencv2/opencv2_build.bash
+# install ros_gazebo_pkgs from source
+#./ros_gazebo_pkgs/build_ros_gazebo_pkgs.bash
 #source ~/.bashrc
 
-# install drcsim from source
-# ./drcsim/drcsim_build.bash
+# install opencv2 from source
+./opencv2/build_opencv2.bash
+source ~/.bashrc
 
+# install drcsim from source
+./drcsim/build_drcsim.bash
+source ~/.bashrc

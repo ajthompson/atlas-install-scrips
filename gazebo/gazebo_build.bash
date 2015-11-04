@@ -6,7 +6,7 @@ if [ -d /home/$USER/gazebo_build ] ; then  # assume already installed
 fi
 
 # Install gazebo6 from source
-GAZEBO_MAJOR_VERSION=4
+GAZEBO_MAJOR_VERSION=6
 
 # values to add to bashrc
 LIBRARY_PATH_EXPORT='export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH'
@@ -20,7 +20,7 @@ sudo apt-add-repository -y ppa:openrave/release
 sudo apt-get update
 
 # install packages
-sudo apt-get install -y build-essential cmake debhelper mesa-utils cppcheck xsltproc python-psutil python mercurial libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-iostreams-dev libtinyxml-dev ruby1.9.1-dev ruby1.9.1 libxml2-utils ruby-ronn robot-player-dev* collada-dom2.4-dp libbullet-dev libbullet-extras-dev libbulletml-dev
+sudo apt-get install -y build-essential cmake debhelper mesa-utils cppcheck xsltproc python-psutil python mercurial libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-iostreams-dev libtinyxml-dev ruby1.9.1-dev ruby1.9.1 libxml2-utils ruby-ronn robot-player-dev* collada-dom2.4-dp libbullet-dev libbullet-extras-dev libbulletml-dev libgazebo${GAZEBO_MAJOR_VERSION}-dev
 
 # create directory
 mkdir ~/gazebo_build
@@ -47,7 +47,7 @@ make -j4 && sudo make install
 # build and install gazebo
 hg clone https://bitbucket.org/osrf/gazebo ~/gazebo_build/gazebo
 cd ~/gazebo_build/gazebo
-hg up gazebo4
+hg up gazebo${GAZEBO_MAJOR_VERSION}
 mkdir build
 cd build
 cmake ..
