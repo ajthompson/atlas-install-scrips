@@ -29,8 +29,19 @@ git clone https://github.com/ros-controls/control_toolbox.git -b hydro-devel
 git clone https://github.com/ros-controls/realtime_tools.git -b hydro-devel
 git clone https://github.com/ros-controls/ros_control.git -b hydro-devel
 
+# additional dependencies
+git clone git@github.com:RainerKuemmerle/g2o.git
+
+# update CMakeLists
+rm -f /home/$USER/ros_gazebo_pkgs_ws/src/CMakeLists.txt
+cp ${ROS_INSTALL_DIR}/share/catkin/cmake/toplevel.cmake /home/$USER/ros_gazebo_pkgs_ws/src/CMakeLists.txt
+sed -i '/set(CATKIN_TOPLEVEL TRUE)/aset(CMAKE_CXX_FLAGS \"${CMAKE_CXX_FLAGS} -std=c++11\")' /home/$USER/ros_gazebo_pkgs_ws/src/CMakeLists.txt
+
 # build the packages
 cd ~/ros_gazebo_pkgs_ws
-catkin_make
+
+#whitelist libg2o
+catkin_make -DCATKIN_WHITELIST_PACKAGES="g2o"
+sudo catkin_make -DCMAKE_INSTALL_PREFIX="/usr/local/lib"
 
 exit 0

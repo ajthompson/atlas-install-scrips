@@ -27,22 +27,23 @@ rosdep install --from-paths src --ignore-src --rosdistro hydro -y -r
 rm -rf src/opencv2
 rm -rf src/gazebo_ros_pkgs
 
-./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release -j8
+# clone in dependencies to build
+sudo ./src/catkin/bin/catkin_make_isolated --install --install-space ${ROS_INSTALL_DIR} -DCMAKE_BUILD_TYPE=Release -j8
 
 # source the install
-COUNT=$(grep -a "source ~/ros_catkin_ws/install_isolated/setup.bash" ~/.bashrc | wc -l)
+COUNT=$(grep -a "source /opt/ros/hydro/setup.bash" ~/.bashrc | wc -l)
 if [ $COUNT -eq 0 ] ; then
-  echo "source ~/ros_catkin_ws/install_isolated/setup.bash" >> ~/.bashrc 
+  echo "source /opt/ros/hydro/setup.bash" >> ~/.bashrc 
 fi
 
 # if it doesn't already exist, symlink /opt/ros/hydro/setup.bash to ~/ros_catkin_ws/install_isolated/setup.bash
-if [ ! -d /opt/ros/hydro ] ; then
-  sudo mkdir -p /opt/ros/hydro
-fi
+#if [ ! -d /opt/ros/hydro ] ; then
+#  sudo mkdir -p /opt/ros/hydro
+#fi
 
-if [ ! -h /opt/ros/hydro/setup.bash ] ; then
-  sudo ln -s /home/$USER/ros_catkin_ws/install_isolated/setup.bash /opt/ros/hydro/setup.bash
-  sudo chmod +x /opt/ros/hydro/setup.bash
-fi
+#if [ ! -h /opt/ros/hydro/setup.bash ] ; then
+#  sudo ln -s /home/$USER/ros_catkin_ws/install_isolated/setup.bash /opt/ros/hydro/setup.bash
+#  sudo chmod +x /opt/ros/hydro/setup.bash
+#fi
 
 exit 0

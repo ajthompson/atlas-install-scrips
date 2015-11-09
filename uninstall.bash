@@ -33,7 +33,7 @@ fi
 # uninstall ros
 if [ -d /home/$USER/ros_catkin_ws ] ; then
   echo "ROS folder detected, removing"
-  rm -rf /home/$USER/ros_catkin_ws
+  sudo rm -rf /home/$USER/ros_catkin_ws
 fi
 
 if [ -d /opt/ros/hydro ] ; then
@@ -41,6 +41,9 @@ if [ -d /opt/ros/hydro ] ; then
     echo "ROS setup symlink detected. Removing"
     sudo rm /opt/ros/hydro/setup.bash
   fi
+
+  echo "ROS /opt/ directory detected. Deleting"
+  sudo rm -rf /opt/ros/hydro
 fi
 
 # uninstall ros_gazebo_pkgs
@@ -65,6 +68,21 @@ if [ -d /home/$USER/drcsim_ws ] ; then
   echo "DRCsim folder found. Removing"
   rm -rf /home/$USER/drcsim_ws
 fi
+
+# uninstall gurobi
+if [ -d /opt/gurobi605 ] ; then
+  sudo rm -rf /opt/gurobi605
+fi
+
+if [ -d ~/ros_catkin_deps_ws ] ; then
+  rm -rf ~/ros_catkin_deps_ws
+fi
+
+# remove workspace
+if [ -d ~/drc_workspace ] ; then
+  rm -rf ~/drc_workspace
+fi
+
 
 echo "All components uninstalled"
 
