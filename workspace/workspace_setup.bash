@@ -5,6 +5,10 @@ if [ -d ~/drc_workspace ] ; then
   exit 0
 fi
 
+#isudo apt-get install libvtk6-dev
+sudo apt-get install libvtk5.8 libvtk5.8-qt4 libvtk5-dev libvtk5-qt4-dev -y
+
+
 source ~/.bashrc
 
 mkdir -p ~/drc_workspace/src
@@ -25,7 +29,7 @@ fi
 
 COUNT=$(grep -a 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ATLAS_ROBOT_INTERFACE}/lib64:/usr/lib' ~/.bashrc | wc -l)
 if [ $COUNT -eq 0 ] ; then
-  echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ATLAS_ROBOT_INTERFACE}/lib64i:/usr/lib' >> ~/.bashrc
+  echo 'export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ATLAS_ROBOT_INTERFACE}/lib64:/usr/lib' >> ~/.bashrc
 fi
 
 COUNT=$(grep -a "alias drchome" ~/.bashrc | wc -l)
@@ -50,7 +54,7 @@ fi
 
 COUNT=$(grep -a 'export GAZEBO_MODEL_PATH=~/drc_workspace/src/drc/field/robotiq:$GAZEBO_MODEL_PATH' ~/.bashrc | wc -l)
 if [ $COUNT -eq 0 ] ; then
-  echo 'export GAZEBO_PLUGIN_PATH=~/drc_workspace/src/drc/field/robotiq:$GAZEBO_MODEL_PATH' >> ~/.bashrc
+  echo 'export GAZEBO_MODEL_PATH=~/drc_workspace/src/drc/field/robotiq:$GAZEBO_MODEL_PATH' >> ~/.bashrc
 fi
 
 COUNT=$(grep -a 'export PYTHONPATH=~/drc_workspace/src/drc/trajopt/build_trajopt/lib:~/drc_workspace/src/drc/trajopt:$PYTHONPATH' ~/.bashrc | wc -l)
@@ -88,8 +92,11 @@ wstool init
 wstool set drc git@github.com:WPI-Humanoid-Research-Lab/drc.git --git -y
 # Install dependencies
 wstool set camera_info_manager_py git@github.com:ros-perception/camera_info_manager_py.git --git -y
-wstool set multisense_ros ssh://hg@bitbucket.org/crl/multisense_ros --hg -y
-#wstool set libg2o git@github.com:RainerKuemmerle/g2o.git --git -y
+wstool set qt_build git@github.com:stonier/qt_ros.git --git -v hydro -y
+wstool set perception_pcl git@github.com:ros-perception/perception_pcl.git --git -v hydro-devel -y
+
+# build the dependencies first
+source ~/.bashrc
 . ~/.bashrc
 wstool update
 . ~/.bashrc
@@ -97,6 +104,5 @@ wstool update
 sudo dpkg -i ~/drc_workspace/src/drc/sentis_tof_m100_pkg/m100api-1.0.0-Linux-amd64.deb
 
 cd ~/drc_workspace
-catkin_make
-. ~/.bashrc
-
+catkin_make -j1 -Dmultisense_ros_DIR="/home/$USER/multisense_ws/devel/share/multisense_ros/cmake/" -Dmultisense_lib_DIR="/home/$USER/multisense_ws/devel/share/multisense_lib/cmake/" -DOpenRAVE_DIR="/home/$USER/openrave/build/"
+source ~/.bashrc

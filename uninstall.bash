@@ -1,6 +1,49 @@
 #!/bin/bash
 
 echo "Uninstalling..."
+
+# uninstall ASSIMP
+if [ -d ~/assimp-3.1.1 ] ; then
+  cd ~/assimp-3.1.1
+
+  if [ -d ~/assimp-3.1.1/build ] ; then
+    cd build
+    sudo make uninstall
+  fi
+
+  cd ~
+  rm -rf ~/assimp-3.1.1
+fi
+
+# uninstall ODE
+if [ -d ~/ode ] ; then
+  cd ~/ode
+  sudo make uninstall
+  cd ~
+  rm -rf ~/ode
+fi
+
+# uninstall OpenRave
+if [ -d ~/openrave ] ; then
+  cd ~/openrave
+  sudo make uninstall
+  cd ~
+  rm -rf ~/openrave
+fi
+
+# uninstall PCL
+if [ -d ~/pcl ] ; then
+  cd ~/pcl
+
+  if [ -d ~/pcl/build ] ; then
+    cd build
+    sudo make uninstall
+  fi
+
+  cd ~
+  rm -rf ~/pcl
+fi
+
 # uninstall gazebo
 if [ -d /home/$USER/gazebo_build ] ; then
   echo "Gazebo folder detected"
@@ -78,11 +121,39 @@ if [ -d ~/ros_catkin_deps_ws ] ; then
   rm -rf ~/ros_catkin_deps_ws
 fi
 
+if [ -d ~/openrave ] ; then
+  
+
 # remove workspace
 if [ -d ~/drc_workspace ] ; then
   rm -rf ~/drc_workspace
 fi
 
+# remove gurobi
+if [ -d ~/g2o ] ; then
+  if [ -d ~/g2o/build ] ; then
+    cd ~/g2o/build
+    sudo make uninstall
+  fi
+
+  cd ~
+  rm -rf ~/g2o
+fi
+
+# remove multisense
+if [ -d ~/multisense_ws ] ; then
+  rm -rf ~/multisense_ws
+fi
+
+# remove sbpl
+if [ -d ~/sbpl ] ; then
+  if [ -d ~/sbpl/src ] ; then
+    cd ~/sbpl/src
+    sudo make uninstall
+  fi
+  cd ~
+  rm -rf ~/sbpl
+fi
 
 echo "All components uninstalled"
 
