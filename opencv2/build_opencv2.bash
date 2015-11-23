@@ -25,7 +25,7 @@ cd ~/opencv_ws
 #sudo apt-get -qq remove ffmpeg x264 libx264-dev
 
 # install dependencies
-sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils libbobcat-dev libx264-dev kdelibs5-dev libboost-random-dev libopenscenegraph-dev libboost-all-dev libeigen3-dev python3.4-dev python-pip libsuitesparse-dev libglu-dev libglew-dev gnuplot ffmpeg ffmpeg2theora
+sudo apt-get -qq install libopencv-dev build-essential checkinstall cmake pkg-config yasm libjpeg-dev libjasper-dev libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev libxine2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev libv4l-dev python-dev python-numpy libtbb-dev libqt4-dev libgtk2.0-dev libfaac-dev libmp3lame-dev libopencore-amrnb-dev libopencore-amrwb-dev libtheora-dev libvorbis-dev libxvidcore-dev x264 v4l-utils libbobcat-dev libx264-dev kdelibs5-dev libopenscenegraph-dev libboost-all-dev libeigen3-dev python3.4-dev python-pip libsuitesparse-dev libglu-dev libglew-dev gnuplot ffmpeg ffmpeg2theora
 
 #sudo add-apt-repository ppa:mc3man/gstffmpeg-keep
 #sudo apt-get update

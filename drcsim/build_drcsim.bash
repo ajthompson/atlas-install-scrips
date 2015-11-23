@@ -7,12 +7,11 @@ source ~/.bashrc
 
 if [ -d ~/drcsim_ws ] ; then
   cd ~/drcsim_ws
-  catkin_make install
   exit 0
 fi
 
 # install dependencies
-sudo apt-get install -y cmake debhelper libboost-dev avr-libc gcc-avr libqt4-dev libtinyxml-dev mercurial
+sudo apt-get install -y cmake debhelper avr-libc gcc-avr libqt4-dev libtinyxml-dev mercurial
 
 # create folder and clone repository
 mkdir -p ~/drcsim_ws/src

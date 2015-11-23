@@ -20,7 +20,7 @@ sudo apt-add-repository -y ppa:openrave/release
 sudo apt-get update
 
 # install packages
-sudo apt-get install -y build-essential cmake debhelper mesa-utils cppcheck xsltproc python-psutil python mercurial libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-regex-dev libboost-iostreams-dev libtinyxml-dev ruby1.9.1-dev ruby1.9.1 libxml2-utils ruby-ronn robot-player-dev* collada-dom2.4-dp libbullet-dev libbullet-extras-dev libbulletml-dev libgazebo${GAZEBO_MAJOR_VERSION}-dev
+sudo apt-get install -y build-essential cmake debhelper mesa-utils cppcheck xsltproc python-psutil python mecurial libtinyxml-dev ruby1.9.1-dev ruby1.9.1 libxml2-utils ruby-ronn robot-player-dev* collada-dom2.4-dp libbullet-dev libbullet-extras-dev libbulletml-dev libgazebo${GAZEBO_MAJOR_VERSION}-dev
 
 # create directory
 mkdir ~/gazebo_build

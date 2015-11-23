@@ -1,0 +1,30 @@
+121,132c121,132
+< add_executable(tao_parser_test
+<     src/TAOParserTest.cpp
+<     src/TAOConstructor.cpp
+<     src/Parsers_TAO.cpp 
+< 	src/BTConstructor.cpp
+< 	src/Constructors.cpp
+< 	src/FSMConstructor.cpp
+< 	src/Parsers_BT.cpp
+< 	src/Parsers_FSM.cpp
+< 	src/BTConstructor_for_Dot.cpp
+< 	src/FSMConstructor_for_Dot.cpp
+< )
+---
+> #add_executable(tao_parser_test
+> #    src/TAOParserTest.cpp
+> #    src/TAOConstructor.cpp
+> #    src/Parsers_TAO.cpp 
+> #	src/BTConstructor.cpp
+> #	src/Constructors.cpp
+> #	src/FSMConstructor.cpp
+> #	src/Parsers_BT.cpp
+> #	src/Parsers_FSM.cpp
+> #	src/BTConstructor_for_Dot.cpp
+> #	src/FSMConstructor_for_Dot.cpp
+> #)
+168c168
+< install(TARGETS tao_parser_test decision_making_parser
+---
+> install(TARGETS decision_making_parser

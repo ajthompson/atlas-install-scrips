@@ -1,6 +1,15 @@
 #!/bin/bash
 
 export ROS_INSTALL_DIR=/opt/ros/hydro
+export SCRIPT_DIR=$(pwd)
+
+# install gcc
+./gcc/build_gcc.bash
+source ~/.bashrc
+
+# install boost
+./boost/build_boost.bash
+source ~/.bashrc
 
 # install ASSIMP from source
 ./assimp/build_assimp.bash
@@ -26,10 +35,6 @@ source ~/.bashrc
 ./ros/ros_build.bash
 source ~/.bashrc
 
-# install ros_gazebo_pkgs from source
-#./ros_gazebo_pkgs/build_ros_gazebo_pkgs.bash
-#source ~/.bashrc
-
 # install opencv2 from source
 ./opencv2/build_opencv2.bash
 source ~/.bashrc
@@ -42,11 +47,6 @@ source ~/.bashrc
 ./gurobi/install_gurobi.bash
 source ~/.bashrc
 
-# install WPI Atlas dependencies
-#./rosinstall_pkgs/rosinstall_deps.bash
-#./catkin_deps/install_catkin_deps.bash
-#source ~/.bashrc
-
 # install libg2o
 ./libg2o/install_libg2o.bash
 source ~/.bashrc
@@ -57,6 +57,34 @@ source ~/.bashrc
 
 # install SBPL
 ./sbpl/build_sbpl.bash
+source ~/.bashrc
+
+# install ROS decision making
+./decision_making/build_decision_making.bash
+source ~/.bashrc
+
+# install octomap
+./octomap/build_octomap.bash
+source ~/.bashrc
+
+# install octomap_msgs
+./octomap_msgs/build_octomap_msgs.bash
+source ~/.bashrc
+
+# install octomap_ros
+./octomap_ros/build_octomap_ros.bash
+source ~/.bashrc
+
+# install PCL ROS packages
+./pcl_ros_packages/build_pcl_ros_packages.bash
+source ~/.bashrc
+
+# install flycapture
+./flycapture/install_flycapture.bash
+source ~/.bashrc
+
+# install old ffmpeg
+./ffmpeg/build_ffmpeg.bash
 source ~/.bashrc
 
 # setup workspace

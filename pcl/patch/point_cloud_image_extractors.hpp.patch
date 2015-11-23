@@ -1,0 +1,10 @@
+--- /home/alec/pcl/io/include/pcl/io/impl/point_cloud_image_extractors.hpp	2015-11-16 18:48:44.596878619 -0500
++++ pcl/point_cloud_image_extractors.hpp	2015-11-16 18:49:50.048999303 -0500
+@@ -42,6 +42,7 @@
+ #include <map>
+ #include <ctime>
+ #include <cstdlib>
++#include <stdint.h>
+ 
+ #include <pcl/common/io.h>
+ 
